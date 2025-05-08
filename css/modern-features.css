@@ -1,0 +1,313 @@
+:root {
+    /* Light theme variables (default) */
+    --primary-color: #0066cc;
+    --secondary-color: #0059b3;
+    --accent-color: #00cc99;
+    --dark-color: #253858;
+    --light-color: #f4f5f7;
+    --text-color: #333;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --timeline-color: #0066cc;
+    --border-color: #ddd;
+    --success-color: #36b37e;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Dark theme variables */
+body.dark-theme {
+    --primary-color: #4d94ff;
+    --secondary-color: #3385ff;
+    --accent-color: #00ffcc;
+    --dark-color: #1a1a2e;
+    --light-color: #25274d;
+    --text-color: #f0f0f0; /* Brighter text for better readability */
+    --background-color: #121212;
+    --card-background: #1e1e24;
+    --timeline-color: #4d94ff;
+    --border-color: #333;
+    --success-color: #4ade80;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#themeToggleBtn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+#themeToggleBtn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: rotate(15deg);
+}
+
+body.dark-theme #themeToggleBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Skill tag hover effect */
+.skill-tag {
+    transition: var(--transition);
+}
+
+.skill-tag-hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Project card animations */
+.project-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card-animate {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--accent-color);
+    width: 0%;
+    z-index: 1001;
+    transition: width 0.2s ease;
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+/* Button hover effects */
+.btn-hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Improved button contrast in dark mode */
+body.dark-theme .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: 500;
+}
+
+body.dark-theme .btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Enhanced section transitions */
+section {
+    transition: var(--transition);
+}
+
+section.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dark theme specific adjustments */
+body.dark-theme .navbar {
+    background-color: var(--card-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .card,
+body.dark-theme .project-card,
+body.dark-theme .certification-card,
+body.dark-theme .timeline-item {
+    background-color: var(--card-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced text readability for dark mode */
+body.dark-theme h1, 
+body.dark-theme h2, 
+body.dark-theme h3, 
+body.dark-theme h4, 
+body.dark-theme h5, 
+body.dark-theme h6 {
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
+
+body.dark-theme p, 
+body.dark-theme li, 
+body.dark-theme span:not(.skill-percent):not(.badge) {
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+body.dark-theme a:not(.btn):not(.nav-link) {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+body.dark-theme a:not(.btn):not(.nav-link):hover {
+    color: #4dffdb;
+    text-decoration: underline;
+}
+
+body.dark-theme .text-muted {
+    color: #b0b0b0 !important;
+}
+
+body.dark-theme .skill-percent {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Skill Progress Visualization */
+.skill-progress-container {
+    margin-top: 15px;
+}
+
+.skill-progress {
+    margin-bottom: 15px;
+}
+
+.skill-progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.skill-percent {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.skill-progress-bar {
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* Card content readability in dark mode */
+body.dark-theme .card-title {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+body.dark-theme .card-text {
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+body.dark-theme .project-card .badge {
+    background-color: rgba(0, 204, 153, 0.2);
+    color: var(--accent-color);
+    font-weight: 600;
+    border: 1px solid rgba(0, 204, 153, 0.3);
+}
+
+body.dark-theme .timeline-content {
+    color: var(--text-color);
+}
+
+body.dark-theme .timeline-date {
+    color: #b0b0b0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .theme-toggle {
+        margin-right: 10px;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .skill-progress-container {
+        margin-top: 10px;
+    }
+}
