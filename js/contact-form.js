@@ -13,7 +13,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS with your public key
-    emailjs.init("ndyGSr9AtgwnMJETw");
+    emailjs.init("PUBLIC_KEY");
 
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) {
