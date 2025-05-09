@@ -156,3 +156,34 @@ themeToggle.addEventListener('click', () => {
 
 // Set theme on page load
 setTheme();
+
+// Typing animation for hero title
+function typeWriter() {
+    const titleElement = document.querySelector('.hero-content h2');
+    if (!titleElement) return;
+    
+    // Set the title text to "Data Scientist & Data Engineer"
+    const text = "Data Scientist & Data Engineer";
+    titleElement.textContent = '';
+    titleElement.style.borderRight = '3px solid var(--accent-color)';
+    
+    let i = 0;
+    const speed = 100; // typing speed in milliseconds
+    
+    function type() {
+        if (i < text.length) {
+            titleElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        } else {
+            titleElement.style.borderRight = 'none';
+        }
+    }
+    
+    setTimeout(() => {
+        type();
+    }, 500);
+}
+
+// Run typing animation when page loads
+window.addEventListener('load', typeWriter);

@@ -13,16 +13,85 @@
     --success-color: #10b981;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    --typing-speed: 3s;
+    --typing-delay: 0.5s;
 }
 
 /* Dark theme variables */
 [data-theme="dark"] {
-    --text-color: #f3f4f6;
-    --light-text: #d1d5db;
+    --text-color: #ffffff;
+    --light-text: #e5e7eb; /* Improved contrast for better readability */
     --background: #111827;
     --light-bg: #1f2937;
     --border-color: #374151;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode card text improvements - different colors for each card type */
+[data-theme="dark"] .expertise-card {
+    background-color: #2a3649;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .timeline-content {
+    background-color: #2d2d4a;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .cert-card {
+    background-color: #2e3b4e;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .project-card {
+    background-color: #293241;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .contact-form {
+    background-color: #2c3850;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .highlight-item {
+    background-color: #263238;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode card hover effects */
+[data-theme="dark"] .expertise-card:hover,
+[data-theme="dark"] .cert-card:hover,
+[data-theme="dark"] .project-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .expertise-card h3,
+[data-theme="dark"] .timeline-content h3,
+[data-theme="dark"] .cert-card h3,
+[data-theme="dark"] .project-content h3,
+[data-theme="dark"] .highlight-item h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .expertise-card p,
+[data-theme="dark"] .timeline-content p,
+[data-theme="dark"] .cert-card p,
+[data-theme="dark"] .project-content p,
+[data-theme="dark"] .highlight-item p {
+    color: var(--light-text);
 }
 
 * {
@@ -99,12 +168,13 @@ section:nth-child(even) {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 5px;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
     text-align: center;
+    font-size: 0.95rem;
 }
 
 .btn-primary {
@@ -130,6 +200,23 @@ section:nth-child(even) {
     color: white;
 }
 
+.btn-download {
+    background-color: #10b981;
+    color: white;
+    border: 2px solid #10b981;
+    margin-left: 10px;
+}
+
+.btn-download:hover {
+    background-color: #059669;
+    border-color: #059669;
+    color: white;
+}
+
+.btn-download i {
+    margin-right: 5px;
+}
+
 .btn-small {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -137,9 +224,30 @@ section:nth-child(even) {
 
 /* Header & Navigation */
 header {
-    background: linear-gradient(135deg, var(--dark-bg) 0%, #2a4365 100%);
-    color: white;
-    padding: 1rem 0 5rem;
+    background-color: #111827;
+    position: relative;
+    color: #ffffff;
+    padding: 2rem 0;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/bg-image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+header .container {
+    position: relative;
+    z-index: 1;
 }
 
 nav {
@@ -174,14 +282,14 @@ nav {
 }
 
 .logo {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(45deg, var(--accent-color), #60a5fa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    padding: 0.5rem;
-    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url('../images/profile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
@@ -257,9 +365,35 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+    animation: fadeIn 1s ease-in-out forwards;
+    position: relative;
+}
+
+.hero-content h2 {
+    font-size: 2rem;
     margin-bottom: 1rem;
-    line-height: 1.2;
+    color: var(--accent-color);
+    position: relative;
+    display: inline-block;
+}
+
+.hero-content h1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 3px;
+    height: 100%;
+    background-color: var(--accent-color);
+    animation: typing-cursor 0.8s infinite;
+}
+
+@keyframes typing-cursor {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
 
 .hero-content h2 {
@@ -267,17 +401,36 @@ nav {
     color: var(--accent-color);
     margin-bottom: 1.5rem;
     font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1s forwards;
+}
+
+[data-theme="dark"] .hero-content h1 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .hero-content p {
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-image {
@@ -288,20 +441,31 @@ nav {
 }
 
 .profile-img-placeholder {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 5px solid rgba(255, 255, 255, 0.1);
+    background-image: url('../images/profile.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 4px solid var(--primary-color);
+    box-shadow: var(--card-shadow);
 }
 
-.profile-img-placeholder i {
-    font-size: 8rem;
-    color: rgba(255, 255, 255, 0.6);
+.profile-img-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes profileFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* About Section */
@@ -389,17 +553,42 @@ nav {
     gap: 2rem;
 }
 
+/* Animation classes */
+.animate {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.expertise-card, .timeline-item, .cert-card, .project-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .expertise-card {
     background-color: white;
     border-radius: 10px;
     padding: 2rem;
     box-shadow: var(--card-shadow);
     transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .expertise-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+    border-width: 1px;
 }
 
 .expertise-icon {
@@ -493,10 +682,11 @@ nav {
 
 .timeline-content {
     padding: 20px;
-    background-color: white;
+    background-color: #f8f9ff;
     border-radius: 10px;
     box-shadow: var(--card-shadow);
     position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .timeline-content::after {
@@ -550,31 +740,66 @@ nav {
 /* Certifications Section */
 .cert-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
+.in-progress {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .cert-card {
-    background-color: white;
+    background-color: #f9fbff;
     border-radius: 10px;
     padding: 2rem;
     box-shadow: var(--card-shadow);
     text-align: center;
     transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .cert-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
 }
 
 .cert-logo {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin: 0 auto 1.5rem;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover .cert-logo {
+    transform: scale(1.05);
 }
 
 .cert-logo.aws {
@@ -614,16 +839,18 @@ nav {
 }
 
 .project-card {
-    background-color: white;
+    background-color: #f7fafc;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
     transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
 }
 
 .project-img {
@@ -763,6 +990,11 @@ nav {
 /* Footer */
 footer {
     background-color: var(--dark-bg);
+    background-image: url('../images/profile.png');
+    background-size: 100px 100px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
     color: white;
     padding: 3rem 0;
 }
@@ -909,6 +1141,13 @@ footer {
     .profile-img-placeholder {
         width: 200px;
         height: 200px;
+        border-radius: 50%;
+        background-image: url('profile.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 4px solid var(--primary-color);
+        box-shadow: var(--card-shadow);
     }
     
     .profile-img-placeholder i {
