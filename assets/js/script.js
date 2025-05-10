@@ -187,3 +187,29 @@ function typeWriter() {
 
 // Run typing animation when page loads
 window.addEventListener('load', typeWriter);
+
+
+// Animate progress bars when they come into view
+function animateProgressBars() {
+    const progressBars = document.querySelectorAll('.progress');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                // Once animation is triggered, no need to observe anymore
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 }); // Trigger when 20% of the element is visible
+    
+    progressBars.forEach(bar => {
+        observer.observe(bar);
+    });
+}
+
+// Call the function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize progress bar animations
+    animateProgressBars();
+});
