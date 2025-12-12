@@ -49,6 +49,13 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
+[data-theme="dark"] .publication-item {
+    background-color: #2f3a4b;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
 [data-theme="dark"] .project-card {
     background-color: #293241;
     color: #ffffff;
@@ -509,6 +516,24 @@ nav {
     transform: translateY(-5px);
 }
 
+.languages-interests {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.languages-interests h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.languages-interests p {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
 .about-highlights {
     flex: 1;
     display: grid;
@@ -558,7 +583,7 @@ nav {
     animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.expertise-card, .timeline-item, .cert-card, .project-card {
+.expertise-card, .timeline-item, .cert-card, .project-card, .publication-item {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -829,6 +854,54 @@ nav {
     font-style: italic;
     margin-bottom: 1.5rem;
     display: block;
+}
+
+/* Publications Section */
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.publication-item {
+    background-color: #f9fbff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.publication-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.publication-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.publication-details {
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.publication-item p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.publication-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.publication-item a:hover {
+    text-decoration: underline;
 }
 
 /* Projects Section */

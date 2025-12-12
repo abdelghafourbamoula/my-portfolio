@@ -91,7 +91,7 @@ window.addEventListener('scroll', () => {
 
 // Animate elements on scroll
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.expertise-card, .timeline-item, .cert-card, .project-card');
+    const elements = document.querySelectorAll('.expertise-card, .timeline-item, .cert-card, .project-card, .publication-item');
     
     elements.forEach(element => {
         const elementPosition = element.getBoundingClientRect().top;
